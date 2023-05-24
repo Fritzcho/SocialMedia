@@ -3,14 +3,15 @@ import { Text, View, ImageBackground } from "react-native";
 
 import Image from '../../assets/Gradient.svg';
 
-const QrScreen = ({navigation, route}) => {
+const Chat = ({navigation, route}) => {
     return (
         <View>
             <ImageBackground source={Image} resizeMode="cover">
-                <Text>This is {route.params.name}'s profile</Text>
+                <Text>This is the chat page</Text>
             </ImageBackground>
         </View>
     );;
 };
 
-export default QrScreen
+export default Chat
+
