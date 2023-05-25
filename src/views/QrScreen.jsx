@@ -1,16 +1,28 @@
 import React from "react";
-import { Text, View, ImageBackground } from "react-native";
+import { Text, View, ImageBackground, StyleSheet } from "react-native";
 
 import Image from '../../assets/Gradient.svg';
 
 const QrScreen = ({navigation, route}) => {
     return (
-        <View>
-            <ImageBackground source={Image} resizeMode="cover">
-                <Text>This is {route.params.name}'s profile</Text>
+        <View style={styles.container}>
+            <ImageBackground source={Image} resizeMode="cover" style={styles.image}>
+                <Text>Connect with new friends!</Text>
             </ImageBackground>
         </View>
-    );;
+    );
 };
 
-export default QrScreen
+export default QrScreen;
+
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    image: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+  });
+  
