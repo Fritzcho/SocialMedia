@@ -1,8 +1,7 @@
-import { ImageBackground, StyleSheet, Text, View, StatusBar, Image } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, StatusBar, Image,  TouchableOpacity } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TouchableOpacity } from 'react-native-web';
 import { QrScreen, Chat } from './src/views';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -112,6 +111,8 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems:'center',
+      height: '100%',
+      width: '100%',
     },
     text: {
       color: 'white',
