@@ -1,7 +1,8 @@
 {
+  "name": "MapSocialMedia",
   "expo": {
-    "name": "SocialMedia",
-    "slug": "SocialMedia",
+    "name": "MapSocialMedia",
+    "slug": "socialmedia",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +22,26 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "MapSocialMedia.com"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiZmlhbGlzYSIsImEiOiJjbGkwYmJiODMwMGlsM2pyc2puODZ4NzNsIn0.kpZDb2QvtXJwCwKYI3ydBw"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "70f8df7c-88ee-4bb4-9ed4-59d0938f95d6"
+      }
+    },
+    "owner": "fritzcho"
   }
 }

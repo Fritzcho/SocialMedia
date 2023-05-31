@@ -1,8 +1,9 @@
-import { ImageBackground, StyleSheet, Text, View, StatusBar, Image,  TouchableOpacity } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, StatusBar, Image,TouchableOpacity, ScrollView } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { QrScreen, Chat } from './src/views';
+import { Calendar, Goals } from './src/components';
+import { QrScreen, Chat, Map } from './src/views';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
@@ -34,7 +35,7 @@ export default function App() {
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
   
-              if (route.name === 'Home') {
+              if (route.name === 'HomeScreen') {
                 iconName = focused
                   ? 'ios-home'
                   : 'ios-home-outline';
@@ -50,9 +51,9 @@ export default function App() {
             tabBarActiveTintColor: '#23ABE6',
             tabBarInactiveTintColor: 'gray',
           })}>
-        <Tab.Screen name="Map" component={Chat} options={{title: 'Map',
+          <Tab.Screen name="Map" component={Map} options={{title: 'Map',
             headerShown: false,}} />
-          <Tab.Screen name="Home" component={Home}options={{title: 'Home',
+          <Tab.Screen name="HomeScreen" component={Home}options={{title: 'Home',
             headerShown: false,
           }}/>
           <Tab.Screen name="Chat" component={Chat} options={{title: 'Chat',
@@ -62,8 +63,8 @@ export default function App() {
   );
 }
 
-import Background from './assets/Gradient.svg';
-import Qr from './assets/QRIcon.svg';
+// import Background from './assets/Gradient.png';
+// import Qr from './assets/qrCode.png';
 
 
 function Home() {
@@ -88,44 +89,52 @@ function Home() {
 
 const HomeScreen = ({navigation}) => {
     return (
+      
         <View style={styles.container}>
-            <ImageBackground source={Background} resizeMode="cover" style={styles.image}>
+          <ScrollView style={{ flex: 1, width: "100%" }} contentContainerStyle={{ flexGrow: 1 }}>
+            <ImageBackground source={require('./assets/Gradient.png')} style={styles.image}>
+                <Goals/>
+            </ImageBackground>
+                <Calendar/>
+          </ScrollView>
                 <TouchableOpacity
                     style={styles.button}
-                  title="Connect"
-                  onPress={() =>
+                    title="Connect"
+                    onPress={() =>
                     navigation.navigate('QrScreen', {name: 'Jane'})
                   }>
-                    <Image source={Qr} resizeMode="cover" style={styles.buttonBack}/>
+                    <Image source={require('./assets/qrCode.png')} resizeMode="cover" style={styles.buttonBack}/>
                 </TouchableOpacity>
-            </ImageBackground>
         </View>
+      
     );
 };
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      flexDirection: 'column',
+      alignItems: 'center',
+      backgroundColor: 'white',
     },
     image: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems:'center',
-      height: '100%',
-      width: '100%',
+      paddingVertical: 50,
+      width: "100%"
     },
     text: {
-      color: 'white',
-      fontSize: 42,
-      lineHeight: 84,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      backgroundColor: '#000000c0',
+      alignItems:"center",
+      fontStyle: "normal",
+      fontWeight: 300,
+      fontSize: 20,
+      lineHeight:23,
+      color: "white",
+      marginBottom: 15,
     },
     button: {
         borderRadius: 500,
         position: 'absolute',
-        bottom: 60,
+        bottom: 50,
+        right: 5,
     },
     buttonBack: {
         alignItems: 'center',
@@ -133,6 +142,6 @@ const styles = StyleSheet.create({
         width: 100,
         borderRadius: 500,
         justifyContent: 'center',
-    }
+    },
   });
   
